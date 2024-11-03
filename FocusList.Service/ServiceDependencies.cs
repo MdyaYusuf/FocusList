@@ -16,6 +16,7 @@ public static class ServiceDependencies
     services.AddAutoMapper(typeof(MappingProfiles));
     services.AddScoped<ToDoBusinessRules>();
     services.AddScoped<CategoryBusinessRules>();
+    services.AddScoped<UserBusinessRules>();
     services.AddScoped<IJwtService, JwtService>();
     services.AddScoped<IAuthenticationService, AuthenticationService>();
     services.AddScoped<IUserService, UserService>();

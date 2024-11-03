@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FocusList.Models", "FocusLi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6B6549F5-0FD8-492D-8DF8-33275296F13A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Test", "Service.Test\Service.Test.csproj", "{53490F84-AED8-42FB-9875-50A4B50CF542}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,9 +43,16 @@ Global
 		{1C9423D6-C606-4CF4-B095-E8E580BEA6FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C9423D6-C606-4CF4-B095-E8E580BEA6FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C9423D6-C606-4CF4-B095-E8E580BEA6FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53490F84-AED8-42FB-9875-50A4B50CF542}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53490F84-AED8-42FB-9875-50A4B50CF542}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53490F84-AED8-42FB-9875-50A4B50CF542}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53490F84-AED8-42FB-9875-50A4B50CF542}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{53490F84-AED8-42FB-9875-50A4B50CF542} = {6B6549F5-0FD8-492D-8DF8-33275296F13A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9DC70395-2AD0-404C-AEFF-B9BDF5106EAF}
