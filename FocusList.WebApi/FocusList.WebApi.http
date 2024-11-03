@@ -1,0 +1,6 @@
+@FocusList.WebApi_HostAddress = http://localhost:5062
+
+GET {{FocusList.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
