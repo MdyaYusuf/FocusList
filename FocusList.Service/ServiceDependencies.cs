@@ -17,11 +17,13 @@ public static class ServiceDependencies
     services.AddScoped<ToDoBusinessRules>();
     services.AddScoped<CategoryBusinessRules>();
     services.AddScoped<UserBusinessRules>();
+    services.AddScoped<RoleBusinessRules>();
     services.AddScoped<IJwtService, JwtService>();
     services.AddScoped<IAuthenticationService, AuthenticationService>();
     services.AddScoped<IUserService, UserService>();
     services.AddScoped<IToDoService, ToDoService>();
     services.AddScoped<ICategoryService, CategoryService>();
+    services.AddScoped<IRoleService, RoleService>();
     services.AddFluentValidationAutoValidation();
     services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
