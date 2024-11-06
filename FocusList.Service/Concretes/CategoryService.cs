@@ -9,18 +9,8 @@ using FocusList.Service.Rules;
 
 namespace FocusList.Service.Concretes;
 
-public class CategoryService : ICategoryService
+public class CategoryService(ICategoryRepository _categoryRepository, IMapper _mapper, CategoryBusinessRules _businessRules) : ICategoryService
 {
-  private readonly ICategoryRepository _categoryRepository;
-  private readonly IMapper _mapper;
-  private readonly CategoryBusinessRules _businessRules;
-  public CategoryService(ICategoryRepository categoryRepository, IMapper mapper, CategoryBusinessRules businessRules)
-  {
-    _categoryRepository = categoryRepository;
-    _mapper = mapper;
-    _businessRules = businessRules;
-  }
-
   public async Task<ReturnModel<CategoryResponseDto>> AddAsync(CreateCategoryRequest request)
   {
     await _businessRules.IsNameUnique(request.Name);

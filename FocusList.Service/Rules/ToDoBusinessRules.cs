@@ -1,13 +1,23 @@
 ﻿using Core.Exceptions;
+using Core.Settings;
 using FocusList.DataAccess.Abstracts;
+using Microsoft.Extensions.Options;
 
 namespace FocusList.Service.Rules;
 
-public class ToDoBusinessRules(IToDoRepository _toDoRepository)
+public class ToDoBusinessRules
 {
+  private readonly IToDoRepository _todoRepository;
+  private readonly IOptions<ToDoSettings> _settings;
+  public ToDoBusinessRules(IToDoRepository todoRepository, IOptions<ToDoSettings> settings)
+  {
+    _todoRepository = todoRepository;
+    _settings = settings;
+  }
+
   public async Task IsToDoExistAsync(Guid id)
   {
-    var todo = await _toDoRepository.GetByIdAsync(id);
+    var todo = await _todoRepository.GetByIdAsync(id);
 
     if (todo == null)
     {
@@ -23,15 +33,13 @@ public class ToDoBusinessRules(IToDoRepository _toDoRepository)
     }
   }
 
-  private const int maxToDos = 5;
-
   public async Task CheckMaxToDosPerUserAsync(string userId)
   {
-    var userToDosCount = await _toDoRepository.GetToDosCountByUserAsync(userId);
+    var userToDosCount = await _todoRepository.GetToDosCountByUserAsync(userId);
 
-    if (userToDosCount > maxToDos)
+    if (userToDosCount > _settings.Value.MaxToDos)
     {
-      throw new BusinessException("Bir kullanıcı maksimum 5 işe sahip olabilir.");
+      throw new BusinessException($"Bir kullanıcı maksimum {_settings.Value.MaxToDos} işe sahip olabilir.");
     }
   }
 }

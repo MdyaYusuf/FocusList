@@ -7,6 +7,7 @@ using FocusList.Service;
 using FocusList.WebApi.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Core.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,7 @@ builder.Services.AddScoped<DecoderService>();
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.Configure<TokenOption>(builder.Configuration.GetSection("TokenOption"));
+builder.Services.Configure<ToDoSettings>(builder.Configuration.GetSection("ToDoSettings"));
 
 builder.Services.AddIdentity<User, IdentityRole>(opt =>
 {

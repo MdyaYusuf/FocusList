@@ -64,6 +64,8 @@ public sealed class UserService : IUserService
 
   public async Task<User> RegisterAsync(RegisterRequest request)
   {
+    await _userBusinessRules.IsUsernameUniqueAsync(request.Username);
+
     User user = new User
     {
       FirstName = request.FirstName,
@@ -87,6 +89,7 @@ public sealed class UserService : IUserService
   public async Task<User> UpdateAsync(string id, UserUpdateRequest request)
   {
     var user = await _userBusinessRules.EnsureUserExistsAsync(id);
+    await _userBusinessRules.IsUsernameUniqueAsync(request.Username);
 
     user.UserName = request.Username;
     user.FirstName = request.FirstName;

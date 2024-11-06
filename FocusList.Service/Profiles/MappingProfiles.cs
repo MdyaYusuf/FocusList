@@ -17,6 +17,8 @@ public class MappingProfiles : Profile
 
     CreateMap<CreateToDoRequest, ToDo>();
     CreateMap<UpdateToDoRequest, ToDo>();
-    CreateMap<ToDo, ToDoResponseDto>();
+    CreateMap<ToDo, ToDoResponseDto>()
+      .ForMember(t => t.Category, opt => opt.MapFrom(t => t.Category.Name))
+      .ForMember(t => t.UserName, opt => opt.MapFrom(t => t.User.UserName));
   }
 }

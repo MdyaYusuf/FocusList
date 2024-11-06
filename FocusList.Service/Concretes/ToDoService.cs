@@ -12,20 +12,8 @@ using System.Net;
 
 namespace FocusList.Service.Concretes;
 
-public class ToDoService : IToDoService
+public class ToDoService(IToDoRepository _todoRepository, IMapper _mapper, ToDoBusinessRules _businessRules, DecoderService _decoderService) : IToDoService
 {
-  private readonly IToDoRepository _todoRepository;
-  private readonly IMapper _mapper;
-  private readonly ToDoBusinessRules _businessRules;
-  private readonly DecoderService _decoderService;
-  public ToDoService(IToDoRepository todoRepository, IMapper mapper, ToDoBusinessRules businessRules, DecoderService decoderService)
-  {
-    _todoRepository = todoRepository;
-    _mapper = mapper;
-    _businessRules = businessRules;
-    _decoderService = decoderService;
-  }
-
   public async Task<ReturnModel<ToDoResponseDto>> AddAsync(CreateToDoRequest request)
   {
     _businessRules.ValidateDates(request.StartDate, request.EndDate);
